@@ -1,0 +1,41 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close.emit()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form itemForm (ngSubmit)="onSubmit()"> 
+        <div class="modal-body">
+            <p><small>Campos con <b class="text-danger">*</b> son obligatorios.</small></p>
+            <div class="row">
+
+                <div class="form-group col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12" [formGroup]="form">
+                    <label for="">Nombre <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" name="nameForm" id="nameForm" formControlName="name">
+                    <p *ngIf="form.controls.name.errors"><small class="text-danger">Nombre debe contener almenos dos letras.</small></p>
+                </div>
+                <div class="form-group col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                    <label for="">Categoría <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" name="catForm" id="catForm" [(ngModel)]="itemSelected.cat_id">
+                </div>
+                <div class="form-group col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12" [formGroup]="form">
+                    <label for="">Nivel <span class="text-danger">*</span></label>
+                    <input class="form-control" type="number" name="nivelForm" id="nivelForm" formControlName="level">
+                    <p *ngIf="form.controls.level.errors"><small class="text-danger">Nivel debe estar entre 1 y 200.</small></p>
+                </div>
+                <div class="form-group col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12">
+                    <label for="">Descripción</label>
+                    <input class="form-control" type="text" name="descripcionForm" id="descripcionForm" [(ngModel)]="itemSelected.description">
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <div class="d-flex justify-content-end">
+                <!-- (click)="sendData.emit(itemSelected)" -->
+                <button class="btn btn-primary">guardar</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-12">
+        <h4>Administración de Items</h4>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <th>N°</th>
+                <th>Imagen</th>
+                <th>Clase</th>
+                <th>Categoria</th>
+                <th>Nombre</th>
+                <th>Nivel</th>
+                <th>Descripción</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Opciones</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <img class="img-thumbnail" [src]="getImage(item.id)" onerror="this.src = 'assets/images/items/default.png';" width="100px">
+                        </div>
+                    </td>
+                    <td>{{item.category?.class?.name}}</td>
+                    <td>{{item.category?.name}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.level}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.created | date:'dd-mm-yyyy HH:mm:ss'}}</td>
+                    <td>{{item.modified | date:'dd-mm-yyyy HH:mm:ss'}}</td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-primary" (click)="open(itemFormModal, item)">EDIT</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #itemFormModal>
+    <app-items-form [itemSelected]="itemSelected" (close)="close()" (sendData)="resolveItem($event)"></app-items-form>
+</ng-template>
