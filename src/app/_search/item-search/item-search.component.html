@@ -1,0 +1,33 @@
+<form itemSearch (ngSubmit)="onSubmit()" class="mb-3"> 
+    <div class="row">
+        <div class="form-group col-lg-4 col-xl-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="nameSearch">Nombre</label>
+            <input class="form-control" type="text" name="nameSearch" id="nameSearch" [(ngModel)]="itemFilter.name">
+        </div>
+        <div class="form-group col-lg-4 col-xl-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="">Nivel</label>
+            <div class="d-flex justify-content-between">
+                <input placeholder="min" class="form-control" type="number" name="nivelSearchMin" id="nivelSearchMin" [(ngModel)]="itemFilter.level">
+                <input placeholder="max" class="form-control" type="number" name="nivelSearchMax" id="nivelSearchMax" [(ngModel)]="itemFilter.level">
+            </div>
+
+        </div>
+        <div class="form-group col-lg-4 col-xl-3 col-md-6 col-sm-12 col-xs-12">
+            <label for="classSearch">Clase</label>
+            <select class="form-control" name="classSearch" id="classSearch" [(ngModel)]="clase.id" (ngModelChange)="onSelectClass($event)">
+                <option></option>
+                <option *ngFor="let class of classes" value={{class.id}}>{{class.name}}</option>
+            </select>
+        </div>
+        <div class="form-group col-lg-4 col-xl-3 col-md-6 col-sm-12 col-xs-12" *ngIf="classSelected">
+            <label for="categorySearch">Categoría</label>
+            <select class="form-control" name="categorySearch" id="categorySearch" [(ngModel)]="itemFilter.cat_id">
+                <option></option>
+                <option *ngFor="let category of categoryList" value={{category.id}}>{{category.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-primary">guardar</button>
+    </div>
+</form>
