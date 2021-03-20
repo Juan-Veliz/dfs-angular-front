@@ -40,9 +40,12 @@
                     <td style="vertical-align: middle;">{{item.created | date:'dd-mm-yyyy HH:mm:ss'}}</td>
                     <td style="vertical-align: middle;">{{item.modified | date:'dd-mm-yyyy HH:mm:ss'}}</td>
                     <td style="vertical-align: middle;">
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-primary" (click)="open(itemFormModal, item)">
+                        <div class="d-flex justify-content-around">
+                            <button class="btn btn-primary btn-sm" (click)="open(itemFormModal, item)">
                                 <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                            </button>
+                            <button [disabled]="item.recipe===null" class="btn btn-info btn-sm" (click)="open(viewRecipes, item)">
+                                <fa-icon [icon]="['fas', 'eye']"></fa-icon>
                             </button>
                         </div>
                     </td>
@@ -54,6 +57,12 @@
 
 <ng-template #itemFormModal>
     <app-items-form 
-        [itemSelected]="itemSelected" (close)="close()" (sendData)="resolveItem($event)" [classes]="classes" [categories]="categories"
-    ></app-items-form>
+        [itemSelected]="itemSelected" (close)="close()" (sendData)="resolveItem($event)" [classes]="classes" [categories]="categories">
+    </app-items-form>
+</ng-template>
+
+<ng-template #viewRecipes>
+    <app-view-recipes
+        [itemSelected]="itemSelected" (close)="close()">
+    </app-view-recipes>
 </ng-template>

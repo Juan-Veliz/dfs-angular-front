@@ -11,7 +11,7 @@ export class Item {
     public modified?:string;
     public category?:any;
     public class?:any;
-
+    public recipe?:any;
     constructor(model:any = null){
         this.id = model?.id;
         this.cat_id = model?.cat_id;

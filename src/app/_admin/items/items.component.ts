@@ -24,7 +24,7 @@ export class ItemsComponent implements OnInit {
   ) { }
   itemSelected:Item = new Item();
   items:Item[] = [];
-  expand = ['categoria','clase'];
+  expand = ['categoria','clase', 'recipe'];
   pagination:Pagination = new Pagination(this.expand);
   modal:NgbModalRef | undefined;
   categories:Category[]=[];

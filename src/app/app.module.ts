@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule, NgbModalModule, NgbCollapseModule  } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbModalModule, NgbCollapseModule, NgbTooltipModule  } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './_layout/navbar/navbar.component';
@@ -15,8 +15,9 @@ import { ItemsFormComponent } from './_modals/items-form/items-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { FileUploadModule } from 'ng2-file-upload'
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faRedo, faEdit, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faRedo, faEdit, faSearch, faEye } from '@fortawesome/free-solid-svg-icons';
 import { ItemSearchComponent } from './_search/item-search/item-search.component';
+import { ViewRecipesComponent } from './_modals/view-recipes/view-recipes.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ItemSearchComponent } from './_search/item-search/item-search.component
     MainComponent,
     NotFoundComponent,
     ItemsFormComponent,
-    ItemSearchComponent
+    ItemSearchComponent,
+    ViewRecipesComponent
   ],
   imports: [
     BrowserModule,
@@ -40,13 +42,14 @@ import { ItemSearchComponent } from './_search/item-search/item-search.component
     BrowserAnimationsModule,
     FileUploadModule,
     FontAwesomeModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    NgbTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
   constructor(private library: FaIconLibrary) {
-    library.addIcons(faRedo, faEdit, faSearch);
+    library.addIcons(faRedo, faEdit, faSearch, faEye);
   }
  }
